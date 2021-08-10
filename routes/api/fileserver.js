@@ -3,7 +3,7 @@ const fs = require("fs");
 const express = require("express");
 const config = require("../../config/index");
 // const auth = require("../../middleware/auth");
-const { CUSTOMER } = require("../../config/config");
+// const { CUSTOMER } = require("../../config/config");
 
 const router = express.Router();
 
@@ -19,7 +19,7 @@ router.get("/test", (req, res) => res.json({ msg: "File Server Test " }));
 
 router.get("/section/:knwType/:cust/:bookId/:fromPage/:toPage", (req, res) => {
   const { knwType, cust, bookId, fromPage, toPage } = req.params;
-
+  console.log("[DEBUG] The File server is called !!!");
   if (
     fs.existsSync(
       `${publicDir}/${knwType}/${cust}/${bookId}/sections/${fromPage}_${toPage}.pdf`
@@ -55,6 +55,8 @@ router.get("/section/:knwType/:cust/:bookId/:fromPage/:toPage", (req, res) => {
 
 router.get("/full/:knwType/:cust/:bookId", (req, res) => {
   const { knwType, cust, bookId } = req.params;
+
+  console.log("The Full Pdf Request is being called !!!");
 
   if (
     fs.existsSync(`${publicDir}/${knwType}/${cust}/${bookId}/${bookId}.pdf`)

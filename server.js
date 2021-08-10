@@ -8,7 +8,7 @@ const fserver = require("./routes/api/fileserver");
 const app = express();
 
 //Body Parser Middleware
-app.use(express.json({ extended: false }));
+//app.use(express.json({ extended: false }));
 
 // Use Routes
 app.use("/api/fs/", fserver);
